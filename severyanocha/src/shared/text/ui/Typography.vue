@@ -2,7 +2,7 @@
 interface Props {
   tagName: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5',
   bold?: boolean,
-  size?: 'xs' | 'x' | 'm' | 'l' | 'xl'
+  size?: 'xs' | 's' | 'm' | 'l' | 'xl'
 }
 
 const props = defineProps<Props>()
