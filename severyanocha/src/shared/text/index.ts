@@ -1,0 +1,1 @@
+export {default as Typography} from '@/shared/text/ui/Typography.vue'
