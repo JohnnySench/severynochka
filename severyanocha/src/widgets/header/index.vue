@@ -4,6 +4,7 @@ import {Logo} from '@/shared/logo'
 import {Button} from '@/shared/button'
 import {Icon} from '@/shared/icon'
 import {Field} from '@/shared/field'
+import {Nav} from '@/features/nav'
 import {ref} from "vue";
 
 const searchField = ref('')
@@ -33,6 +34,9 @@ const onSubmit = () => console.log('SEND TO SERVER')
           </template>
         </Field>
       </div>
+      <div class="header_nav">
+        <Nav />
+      </div>
     </Container>
   </header>
 </template>
@@ -58,5 +62,6 @@ const onSubmit = () => console.log('SEND TO SERVER')
 }
 .header_search {
   margin-left: 16px;
+  margin-right: 40px;
 }
 </style>
