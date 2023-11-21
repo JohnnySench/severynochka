@@ -4,10 +4,23 @@ import {Logo} from '@/shared/logo'
 import {Button} from '@/shared/button'
 import {Icon} from '@/shared/icon'
 import {Field} from '@/shared/field'
-import {ref} from "vue";
+import {Navigation} from "@/features/header/navigation";
+import {UserMenu} from "@/features/header/user-menu";
+import avatarJPG from '@/assets/avatar.jpg'
+import {reactive, ref} from "vue";
 
 const searchField = ref('')
 const onSubmit = () => console.log('SEND TO SERVER')
+
+const navItems = reactive([
+  {label: 'Избранное', icon: 'favorite', count: 0, link: '/favorite'},
+  {label: 'Заказы', icon: 'orders', count: 0, link: '/orders'},
+  {label: 'Корзина', icon: 'cart', count: 1, link: '/cart'},
+])
+const userMenu = reactive({
+  avatar: avatarJPG,
+  name: 'Алексей'
+})
 
 </script>
 
@@ -32,6 +45,12 @@ const onSubmit = () => console.log('SEND TO SERVER')
             </svg>
           </template>
         </Field>
+      </div>
+      <div class="header_navigation">
+        <Navigation :data="navItems"/>
+      </div>
+      <div class="header_user-menu">
+        <UserMenu :data="userMenu"/>
       </div>
     </Container>
   </header>
@@ -58,5 +77,11 @@ const onSubmit = () => console.log('SEND TO SERVER')
 }
 .header_search {
   margin-left: 16px;
+}
+.header_navigation {
+  margin: 0 24px 0 40px;
+}
+.header_user-menu {
+  width: 217px;
 }
 </style>
