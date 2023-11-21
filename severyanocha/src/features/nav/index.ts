@@ -1,0 +1,1 @@
+export {default as Nav} from '@/features/nav/index.vue'
