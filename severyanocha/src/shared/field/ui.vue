@@ -63,7 +63,6 @@ const {disabled, size, placeholder} = props
   border-radius: 4px;
   border: 1px solid var(--grayscale-light);
   background: var(--main-surface);
-  color: var(--main-on-surface)
 }
 .field_input:focus {
   border: 1px solid var(--main-secondary);

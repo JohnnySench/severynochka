@@ -64,6 +64,7 @@ const {tagName, bold, size} = props;
 .typography {
   line-height: 150%;
   font-style: normal;
+  color: var(--main-on-surface)
 }
 
 .size_xs {

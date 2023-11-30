@@ -41,7 +41,6 @@ const {data} = props
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: var(--main-on-surface)
 }
 .item_count {
   font-size: 12px;
