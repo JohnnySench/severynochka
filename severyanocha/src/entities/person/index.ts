@@ -1,1 +1,1 @@
-export {usePersonStore} from './model'
+export {usePersonStore, type Person} from './model'

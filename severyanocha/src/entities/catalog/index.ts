@@ -1,0 +1,1 @@
+export { type CatalogSection, useCatalogStore } from './model';

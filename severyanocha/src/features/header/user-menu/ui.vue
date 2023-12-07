@@ -19,6 +19,8 @@ const {data} = props
 const personStore = usePersonStore();
 const {setIsAuth} = personStore;
 const isLocalVisible = ref(false)
+
+
 const toggleVisibleMenu = () => {
   isLocalVisible.value = !isLocalVisible.value
 }
