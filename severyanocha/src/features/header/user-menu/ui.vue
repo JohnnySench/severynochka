@@ -120,10 +120,6 @@ onMounted(() => {
   cursor: pointer;
 }
 
-user-menu_list {
-
-}
-
 .item_link {
   text-decoration: none;
 }
@@ -138,5 +134,18 @@ user-menu_list {
   display: grid;
   grid-gap: 10px;
   grid-column: 1/4;
+}
+
+@media screen and (max-width: 1207px) {
+  .user-menu_name,
+  .user-menu_button {
+    display: none;
+  }
+  .user-menu {
+    grid-template-columns: 1fr;
+  }
+  .user-menu_list {
+    grid-column: unset;
+  }
 }
 </style>

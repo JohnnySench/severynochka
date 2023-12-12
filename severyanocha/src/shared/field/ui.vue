@@ -46,9 +46,6 @@ const {disabled, size, placeholder} = props
 </template>
 
 <style scoped>
-.field {
-  width: 374px;
-}
 .field:deep(.typography) {
   color: var(--grayscale-hard);
 }

@@ -10,8 +10,11 @@ import {DropdownMenu} from "@/features/header/dropdown-menu";
 import avatarJPG from '@/assets/avatar.jpg'
 import {reactive, ref} from "vue";
 import {usePersonStore} from "@/entities/person";
+import {useScreenStore} from "@/entities/screen";
 import {storeToRefs} from "pinia";
 
+const screenStore = useScreenStore()
+const {getPlatform} = storeToRefs(screenStore)
 const personStore = usePersonStore();
 const {person, isAuth} = storeToRefs(personStore)
 const navItems = reactive([
@@ -47,7 +50,7 @@ const toggleDropdown = () => isDropdownHidden.value = !isDropdownHidden.value
             :bg-color="'white'"
             colorful
             :orientation="'horizontal'"
-            with-text
+            :with-text="getPlatform === 'desktop'"
         />
         <div class="header_catalog">
           <Button
@@ -135,6 +138,7 @@ const toggleDropdown = () => isDropdownHidden.value = !isDropdownHidden.value
 }
 
 .header_search {
+  width: 374px;
   margin-left: 16px;
 }
 
@@ -156,5 +160,41 @@ const toggleDropdown = () => isDropdownHidden.value = !isDropdownHidden.value
 
 .header_login-btn {
   width: 157px;
+}
+
+@media screen and (max-width: 1207px) {
+  .header_container {
+    grid-gap: 20px;
+  }
+  .header_navigation {
+    margin: unset;
+  }
+  .header_login-btn {
+    width: max-content;
+  }
+  .header_catalog {
+    width: unset;
+    margin-left: unset;
+  }
+  .header_login-btn:deep(.typography),
+  .header_catalog:deep(.typography) {
+    display: none;
+  }
+  .header_catalog:deep(.button) {
+    width: max-content;
+  }
+  .header_search {
+    margin-left: unset;
+    width: max-content;
+  }
+  .header_search:deep(.field_input) {
+    width: 100%;
+  }
+  .header_user-menu {
+    width: unset;
+  }
+  .header_user-menu:deep(.user-menu) {
+    width: max-content;
+  }
 }
 </style>
