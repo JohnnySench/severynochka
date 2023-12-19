@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import Header from '@/widgets/header/index.vue'
+import {Header} from '@/widgets/header'
+import {BottomTabNavigator} from "@/widgets/bottom-tab-navigator";
 </script>
 
 <template>
   <main>
-    <Header/>
+    <Header />
+    <BottomTabNavigator />
   </main>
 </template>

@@ -7,7 +7,6 @@ import {Field} from '@/shared/field'
 import {Navigation} from "@/features/header/navigation";
 import {UserMenu} from "@/features/header/user-menu";
 import {DropdownMenu} from "@/features/header/dropdown-menu";
-import avatarJPG from '@/assets/avatar.jpg'
 import {reactive, ref} from "vue";
 import {usePersonStore} from "@/entities/person";
 import {useScreenStore} from "@/entities/screen";
@@ -23,7 +22,7 @@ const navItems = reactive([
   {label: 'Корзина', icon: 'cart', count: 1, link: '/cart'},
 ])
 const userMenu = reactive({
-  avatar: avatarJPG,
+  avatar: person.value.avatar,
   name: person.value.name,
   menu: [
     {
@@ -46,12 +45,16 @@ const toggleDropdown = () => isDropdownHidden.value = !isDropdownHidden.value
   <header class="header">
     <div class="header_content">
       <Container class="header_container">
-        <Logo
-            :bg-color="'white'"
-            colorful
-            :orientation="'horizontal'"
-            :with-text="getPlatform === 'desktop'"
-        />
+        <div class="header_logo">
+          <RouterLink to="/">
+            <Logo
+                :bg-color="'white'"
+                colorful
+                :orientation="'horizontal'"
+                :with-text="getPlatform === 'desktop'"
+            />
+          </RouterLink>
+        </div>
         <div class="header_catalog">
           <Button
               @mouseenter="toggleDropdown"
@@ -196,5 +199,24 @@ const toggleDropdown = () => isDropdownHidden.value = !isDropdownHidden.value
   .header_user-menu:deep(.user-menu) {
     width: max-content;
   }
+}
+
+@media screen and (max-width: 767px) {
+  .header_navigation,
+  .header_user-menu,
+  .header_catalog {
+    display: none;
+  }
+  .header_logo {
+    display: flex;
+    align-items: center;
+  }
+  .header_logo:deep(svg) {
+    width: 39px;
+  }
+  .header_search {
+    width: 100%;
+  }
+
 }
 </style>

@@ -1,5 +1,6 @@
 interface Person {
-    name: string
+    name: string,
+    avatar: string
 }
 
 export {type Person};
