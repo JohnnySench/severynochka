@@ -2,9 +2,11 @@
 
 :root {
     /* colors */
+    --main-page-background: #F9F4E2;
     --main-background: #F4F4F2;
     --main-on-background: #291E0F;
     --main-surface: #FFF;
+    --main-footer: #F9F4E2;
     --main-on-surface: #414141;
     --main-primary: #F63;
     --main-on-primary: #FFF;

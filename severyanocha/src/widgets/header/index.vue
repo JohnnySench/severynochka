@@ -133,6 +133,7 @@ const toggleDropdown = () => isDropdownHidden.value = !isDropdownHidden.value
   position: relative;
   z-index: 1;
   box-shadow: var(--shadow-default-s);
+  background-color: #FFFFFF;
 }
 
 .header_catalog {
@@ -188,13 +189,12 @@ const toggleDropdown = () => isDropdownHidden.value = !isDropdownHidden.value
   }
   .header_search {
     margin-left: unset;
-    width: max-content;
   }
   .header_search:deep(.field_input) {
     width: 100%;
   }
   .header_user-menu {
-    width: unset;
+    width: 56px;
   }
   .header_user-menu:deep(.user-menu) {
     width: max-content;
