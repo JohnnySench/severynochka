@@ -12,7 +12,7 @@ import {Carousel} from "@/features/carousel";
   <Content>
     <template #content>
       <Carousel
-        :autoplay="2000"
+        :autoplay="3000"
         :items-to-show="1"
         :wrap-around="true"
       />
