@@ -127,6 +127,7 @@ const toggleDropdown = () => isDropdownHidden.value = !isDropdownHidden.value
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 2;
 }
 
 .header_content {

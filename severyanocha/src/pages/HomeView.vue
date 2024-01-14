@@ -3,6 +3,7 @@ import {Header} from '@/widgets/header'
 import {BottomTabNavigator} from "@/widgets/bottom-tab-navigator";
 import {Footer} from "@/widgets/footer";
 import {Content} from "@/shared/content";
+import {Carousel} from "@/features/carousel";
 </script>
 
 <template>
@@ -10,7 +11,11 @@ import {Content} from "@/shared/content";
   <BottomTabNavigator/>
   <Content>
     <template #content>
-      <h1>Content</h1>
+      <Carousel
+        :autoplay="2000"
+        :items-to-show="1"
+        :wrap-around="true"
+      />
     </template>
   </Content>
   <Footer/>
