@@ -71,6 +71,9 @@ const slots = useSlots()
 .product-card:hover {
   box-shadow: var(--shadow-primary-m);
 }
+.product-card:hover:deep(.button) {
+  background-color: var(--main-primary);
+}
 .card {
   display: flex;
   flex-direction: column;

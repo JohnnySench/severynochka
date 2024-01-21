@@ -9,7 +9,7 @@ const tabs = [
   {name: 'Redbor', title: 'с.Краснобор', id: 3},
   {name: 'Dieyor', title: 'д.Диюр', id: 4},
 ]
-const selectedTab = ref(1)
+const selectedTab = ref<number>(1)
 
 const changeTab = (id: number) => selectedTab.value = id
 </script>
