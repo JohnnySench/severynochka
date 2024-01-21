@@ -6,12 +6,29 @@ import {Content} from "@/shared/content";
 import {Carousel} from "@/features/carousel";
 import {Products} from "@/widgets/products";
 import {LocationMap} from "@/widgets/location";
+import {SpecialOffers} from "@/widgets/special-offers";
+
 import {reactive} from "vue";
 import product1PNG from "@/assets/product-1.png"
 import product2PNG from "@/assets/product-2.png"
 import product3PNG from "@/assets/product-3.png"
 import product4PNG from "@/assets/product-4.png"
-
+import offer1PNG from "@/assets/offer-1.png"
+import offer2PNG from "@/assets/offer-2.png"
+const specialOffers = reactive([
+  {
+    title: 'Оформите карту «Северяночка»',
+    href: '/',
+    description: 'И получайте бонусы при покупке в магазинах и на сайте',
+    image: offer1PNG
+  },
+  {
+    title: 'Покупайте акционные товары',
+    href: '/',
+    description: 'И получайте вдвое больше бонусов',
+    image: offer2PNG
+  },
+])
 const productCards = reactive([
   {
     title: "Акции",
@@ -103,6 +120,7 @@ const addToBasket = (id: number) => console.log(id)
           @add-to-basket="addToBasket"
       />
     </template>
+    <SpecialOffers :data="specialOffers" />
     <LocationMap />
   </Content>
   <Footer/>
