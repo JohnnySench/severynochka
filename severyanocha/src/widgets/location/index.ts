@@ -1,0 +1,1 @@
+export {default as LocationMap} from './ui.vue'

@@ -4,9 +4,10 @@ import {Container} from "@/shared/container";
 
 <template>
   <main class="main">
-    <slot name="slider"></slot>
+    <slot name="slider" />
     <Container class="container-content">
-      <slot name="content"></slot>
+      <slot name="content" />
+      <slot />
     </Container>
   </main>
 </template>

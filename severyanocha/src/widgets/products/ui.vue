@@ -75,6 +75,9 @@ const addToBasket = (id: number) => {
 .card {
   margin-bottom: 119px;
 }
+.card:last-child {
+  margin-bottom: 0;
+}
 
 .card__btn-discount {
   width: 56px;

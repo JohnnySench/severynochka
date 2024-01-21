@@ -5,6 +5,7 @@ import {Footer} from "@/widgets/footer";
 import {Content} from "@/shared/content";
 import {Carousel} from "@/features/carousel";
 import {Products} from "@/widgets/products";
+import {LocationMap} from "@/widgets/location";
 import {reactive} from "vue";
 import product1PNG from "@/assets/product-1.png"
 import product2PNG from "@/assets/product-2.png"
@@ -102,6 +103,7 @@ const addToBasket = (id: number) => console.log(id)
           @add-to-basket="addToBasket"
       />
     </template>
+    <LocationMap />
   </Content>
   <Footer/>
 </template>

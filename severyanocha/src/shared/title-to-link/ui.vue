@@ -5,21 +5,19 @@ import {Icon} from "@/shared/icon/index";
 
 interface Props {
   title: string,
-  link: string,
-  linkText: string
+  link?: string,
+  linkText?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
   title: 'Акции',
-  link: '/sales',
-  linkText: 'Все акции'
 })
 </script>
 
 <template>
   <div class="card-link">
     <Typography tag-name="h3" bold>{{ title }}</Typography>
-    <RouterLink class="link" :to="link">
+    <RouterLink v-if="!!link" class="link" :to="link">
       <Typography class="link__text" tag-name="span" size="s">{{ linkText }}</Typography>
       <Button
           class="link__button"
