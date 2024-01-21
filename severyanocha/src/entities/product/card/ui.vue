@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {useSlots} from "vue";
 import {Typography} from "@/shared/text";
-import {Rating} from "@/shared/rating";
 
 
 const slots = useSlots()
