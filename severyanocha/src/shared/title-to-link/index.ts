@@ -1,0 +1,1 @@
+export {default as TitleToLink} from './ui.vue'
