@@ -42,7 +42,11 @@ const props = withDefaults(defineProps<Props>(), {
 .link__text {
   padding: 8px;
 }
+.link__text:deep(span) {
+  cursor: pointer;
+}
 .link__button:deep(svg) {
+  cursor: pointer;
   transform: rotate(-90deg);
 }
 .link__button {
@@ -54,7 +58,15 @@ const props = withDefaults(defineProps<Props>(), {
   grid-template-columns: repeat(2, max-content);
   align-items: center;
 }
+@media screen and (max-width: 1207px) {
+   .card-link {
+     margin-bottom: 32px;
+   }
+}
 @media screen and (max-width: 767px) {
+  .card-link {
+    margin-bottom: 16px;
+  }
   .card-link:deep(h3) {
     font-size: 24px;
   }

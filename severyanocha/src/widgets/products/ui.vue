@@ -25,6 +25,7 @@ const addToBasket = (id: number) => {
       <ProductCard
           v-for="card in items"
           :key="card.nameProduct"
+          class="card-list__item"
       >
         <template #image>
           <img class="card-list__image" :src="card.img" :alt="card.nameProduct">
@@ -72,9 +73,7 @@ const addToBasket = (id: number) => {
 </template>
 
 <style scoped>
-.card {
-  margin-bottom: 119px;
-}
+
 .card:last-child {
   margin-bottom: 0;
 }
@@ -96,6 +95,27 @@ const addToBasket = (id: number) => {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.card-list__item .card__btn {
+  background-color: transparent !important;
+  border-color: var(--main-secondary);
+  border-style: solid;
+  border-width: 1px;
+  color: var(--main-secondary);
+}
+.card-list__item .card__btn:deep(.button_text) {
+  color: var(--main-secondary) !important;
+}
+.card-list__item:hover .card__btn {
+  background-color: var(--main-primary) !important;
+  border-color: var(--main-on-primary);
+  border-style: solid;
+  border-width: 1px;
+  color: var(--main-secondary);
+}
+.card-list__item:hover .card__btn:deep(.button_text) {
+  color: var(--main-on-primary) !important;
 }
 
 

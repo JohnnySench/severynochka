@@ -31,7 +31,6 @@ const props = defineProps<Props>()
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 40px;
-  margin-bottom: 120px;
 }
 
 @media screen and (max-width: 1207px) {

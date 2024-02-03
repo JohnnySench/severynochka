@@ -5,16 +5,21 @@ import {Footer} from "@/widgets/footer";
 import {Content} from "@/shared/content";
 import {Carousel} from "@/features/carousel";
 import {Products} from "@/widgets/products";
+import {Articles} from "@/widgets/articles";
 import {LocationMap} from "@/widgets/location";
 import {SpecialOffers} from "@/widgets/special-offers";
-
 import {reactive} from "vue";
+
 import product1PNG from "@/assets/product-1.png"
 import product2PNG from "@/assets/product-2.png"
 import product3PNG from "@/assets/product-3.png"
 import product4PNG from "@/assets/product-4.png"
 import offer1PNG from "@/assets/offer-1.png"
 import offer2PNG from "@/assets/offer-2.png"
+import article1PNG from '@/assets/article1PNG.png'
+import article2PNG from '@/assets/article2PNG.png'
+import article3PNG from '@/assets/article3PNG.png'
+
 const specialOffers = reactive([
   {
     title: 'Оформите карту «Северяночка»',
@@ -95,6 +100,33 @@ const productCards = reactive([
     ]
   }
 ])
+const articleCards = reactive([
+  {
+    title: "Статьи",
+    link: "/article",
+    linkText: "Все статьи",
+    items: [
+      {
+        title: "Режим использования масок и перчаток на территории магазинов",
+        description: "Подробная информация о режимах использования масок и перчаток на территории магазинов \"ЛЕНТА\". Информация обновляется каждый будний день.",
+        date: '05.03.2021',
+        image: article1PNG
+      },
+      {
+        title: "Весеннее настроение для каждой",
+        description: "8 Марта – это не просто Международный женский день, это ещё день тюльпанов, приятных сюрпризов и праздничных тёплых пожеланий",
+        date: '05.07.2021',
+        image: article2PNG
+      },
+      {
+        title: "ЗОЖ или ФАСТФУД. А вы на чьей стороне? Голосуем!",
+        description: "Голосуйте за любимые категории, выбирайте категорию-победителя в мобильном приложении и получайте кешбэк 10% баллами в апреле!",
+        date: '22.02.2020',
+        image: article3PNG
+      },
+    ]
+  },
+])
 const addToBasket = (id: number) => console.log(id)
 </script>
 
@@ -104,9 +136,9 @@ const addToBasket = (id: number) => console.log(id)
   <Content>
     <template #slider>
       <Carousel
-        :autoplay="3000"
-        :items-to-show="1"
-        :wrap-around="true"
+          :autoplay="3000"
+          :items-to-show="1"
+          :wrap-around="true"
       />
     </template>
     <template #content>
@@ -119,9 +151,17 @@ const addToBasket = (id: number) => console.log(id)
           :title="card.title"
           @add-to-basket="addToBasket"
       />
+      <SpecialOffers :data="specialOffers"/>
+      <LocationMap/>
+      <Articles
+          v-for="({items, linkText, link, title}) in articleCards"
+          :key="title"
+          :items="items"
+          :link-text="linkText"
+          :link="link"
+          :title="title"
+      />
     </template>
-    <SpecialOffers :data="specialOffers" />
-    <LocationMap />
   </Content>
   <Footer/>
 </template>

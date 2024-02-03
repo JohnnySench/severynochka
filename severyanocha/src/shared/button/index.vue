@@ -48,6 +48,7 @@ const classes = ['button', `size_${size}`, `decoration_${decoration}`, `color_${
   width: 100%;
   border-radius: 4px;
   cursor: pointer;
+  transition: all .1s ease-in-out;
 }
 
 .button_text {
