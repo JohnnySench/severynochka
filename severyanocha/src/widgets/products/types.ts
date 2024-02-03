@@ -17,4 +17,4 @@ interface Card {
 }
 
 
-export {type ProductCardProps}
+export {type ProductCardProps, type Card}

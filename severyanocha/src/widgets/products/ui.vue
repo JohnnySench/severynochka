@@ -2,15 +2,27 @@
 import {TitleToLink} from "@/shared/title-to-link";
 import {ProductCard} from "@/entities/product"
 import {Button} from "@/shared/button";
-import type {ProductCardProps} from "./types";
 import {Typography} from "@/shared/text";
 import {Rating} from "@/shared/rating";
 import {Like} from "@/features/like";
+import type {ProductCardProps, Card} from "./types";
+import {useBasketStore} from "@/entities/product";
+import {storeToRefs} from "pinia";
 
 const {items, title, linkText, link} = defineProps<ProductCardProps>()
-const emits = defineEmits<{ (e: 'add-to-basket', id: number): void }>()
-const addToBasket = (id: number) => {
-  emits('add-to-basket', id)
+const {basket} = storeToRefs(useBasketStore())
+const {addItemInBasket} = useBasketStore()
+const addToBasket = (card: Card) => {
+  addItemInBasket(card)
+}
+const countItem = (id: number):number => {
+  let count = 0;
+  basket.value.forEach(item => {
+    if (item.id === id) {
+      count++;
+    }
+  })
+  return count
 }
 </script>
 
@@ -60,10 +72,10 @@ const addToBasket = (id: number) => {
           <Button
               color="secondary"
               class="card__btn"
-              @click="addToBasket(card.id)"
+              @clickOnBtn="addToBasket(card)"
           >
             <template #default>
-              <span>В корзину</span>
+              <span>{{countItem(card.id) === 0 ? 'В корзину' : countItem(card.id)}}</span>
             </template>
           </Button>
         </template>
@@ -104,9 +116,11 @@ const addToBasket = (id: number) => {
   border-width: 1px;
   color: var(--main-secondary);
 }
+
 .card-list__item .card__btn:deep(.button_text) {
   color: var(--main-secondary) !important;
 }
+
 .card-list__item:hover .card__btn {
   background-color: var(--main-primary) !important;
   border-color: var(--main-on-primary);
@@ -114,6 +128,7 @@ const addToBasket = (id: number) => {
   border-width: 1px;
   color: var(--main-secondary);
 }
+
 .card-list__item:hover .card__btn:deep(.button_text) {
   color: var(--main-on-primary) !important;
 }
@@ -137,15 +152,19 @@ const addToBasket = (id: number) => {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 16px;
   }
+
   .card-list__name-product {
     font-size: 12px;
   }
+
   .card-list:deep(span) {
     -webkit-line-clamp: 3;
   }
+
   .card-list__price-discount {
     font-size: 14px;
   }
+
   .card-list__full-price {
     font-size: 12px;
   }

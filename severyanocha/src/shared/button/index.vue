@@ -26,7 +26,7 @@ const classes = ['button', `size_${size}`, `decoration_${decoration}`, `color_${
   <button
       :class="classes"
       :disabled="disabled"
-      @click="$emit('click')"
+      @click="$emit('clickOnBtn')"
   >
     <slot name="leftIcon"/>
     <Typography
