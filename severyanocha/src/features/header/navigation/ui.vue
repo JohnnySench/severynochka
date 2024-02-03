@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import {Typography} from "@/shared/text";
 import {Icon} from "@/shared/icon";
+import {useBasketStore} from "@/entities/product";
+import {storeToRefs} from "pinia";
+
 
 interface Props {
   data: {
@@ -10,7 +13,7 @@ interface Props {
     link: string
   }[]
 }
-
+const {countBasket} = storeToRefs(useBasketStore())
 const props = defineProps<Props>()
 const {data} = props
 </script>
@@ -22,7 +25,7 @@ const {data} = props
         <RouterLink :to="item.link" class="item">
           <Icon :type="item.icon"/>
           <Typography tag-name="span" size="xs">{{ item.label }}</Typography>
-          <span v-if="item.count > 0" class="item_count">{{ item.count }}</span>
+          <span v-if="item.count > 0" class="item_count">{{countBasket}}</span>
         </RouterLink>
       </li>
     </ul>
