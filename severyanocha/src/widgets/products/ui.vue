@@ -11,9 +11,11 @@ import {storeToRefs} from "pinia";
 
 const {items, title, linkText, link} = defineProps<ProductCardProps>()
 const {basket} = storeToRefs(useBasketStore())
-const {addItemInBasket} = useBasketStore()
+const {removeItemFromBasket, addItemToBasket} = useBasketStore()
 const addToBasket = (card: Card) => {
-  addItemInBasket(card)
+  const isHas = basket.value.some(item => item.id === card.id)
+  if (isHas) return
+  addItemToBasket(card)
 }
 const countItem = (id: number):number => {
   let count = 0;
@@ -24,6 +26,7 @@ const countItem = (id: number):number => {
   })
   return count
 }
+
 </script>
 
 <template>
@@ -68,14 +71,30 @@ const countItem = (id: number):number => {
         <template #stars>
           <Rating :rating="card.rating"/>
         </template>
-        <template #button>
+        <template v-if="countItem(card.id) === 0" #button>
           <Button
               color="secondary"
               class="card__btn"
               @clickOnBtn="addToBasket(card)"
           >
             <template #default>
-              <span>{{countItem(card.id) === 0 ? 'В корзину' : countItem(card.id)}}</span>
+              <span>В корзину</span>
+            </template>
+          </Button>
+        </template>
+        <template v-else #button>
+          <Button
+              color="secondary"
+              class="card__btn"
+          >
+            <template #leftIcon>
+              <div @click="removeItemFromBasket(card.id)" class="card-list__left-icon">-</div>
+            </template>
+            <template #default>
+              <span>{{countItem(card.id)}}</span>
+            </template>
+            <template #rightIcon>
+              <div @click="addItemToBasket(card)" class="card-list__right-icon">+</div>
             </template>
           </Button>
         </template>
@@ -131,6 +150,9 @@ const countItem = (id: number):number => {
 
 .card-list__item:hover .card__btn:deep(.button_text) {
   color: var(--main-on-primary) !important;
+}
+.card-list__left-icon {
+  transform: rotate(-90deg);
 }
 
 

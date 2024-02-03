@@ -8,9 +8,9 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   like: false
 })
-const emits = defineEmits<{(e: 'click'):void}>()
+const emits = defineEmits<{(e: 'clickOnLike'):void}>()
 const clickOnLike = () => {
-  emits('click')
+  emits('clickOnLike')
 }
 </script>
 
