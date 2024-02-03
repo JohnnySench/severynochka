@@ -6,10 +6,18 @@
   <article class="article-card">
     <slot name="image"/>
     <div class="article-card__info">
-      <slot name="date"/>
-      <slot name="title"/>
-      <slot name="description"/>
-      <slot name="button"/>
+      <div>
+        <slot name="date"/>
+      </div>
+      <div>
+        <slot name="title"/>
+      </div>
+      <div>
+        <slot name="description"/>
+      </div>
+      <div>
+        <slot name="button"/>
+      </div>
     </div>
   </article>
 </template>
@@ -28,10 +36,11 @@
     box-shadow: var(--shadow-primary-m);
   }
   .article-card__info {
+    height: 256px;
     display: flex;
     flex-direction: column;
-    grid-row-gap: 10px;
     padding: 10px;
+    justify-content: space-between;
   }
 
   @media screen and (max-width: 1207px) {
@@ -43,6 +52,9 @@
     .article-card {
       width: 336px;
       height: 300px;
+    }
+    .article-card__info {
+      height: 204px;
     }
   }
 </style>

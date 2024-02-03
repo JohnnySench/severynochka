@@ -40,7 +40,9 @@ const props = defineProps<ArticleCardProps>()
           <Typography tag-name="span" size="s">{{ card.description }}</Typography>
         </template>
         <template #button>
-          <Button color="secondary">В корзину</Button>
+          <RouterLink to="/description">
+            <Button color="secondary">Подробнее</Button>
+          </RouterLink>
         </template>
       </ArticleCard>
     </div>
@@ -77,20 +79,23 @@ const props = defineProps<ArticleCardProps>()
   }
 }
 .card-list__item:deep(.button.color_secondary) {
-  background-color: transparent;
-  border-color: var(--main-secondary);
-  border-style: solid;
-  border-width: 1px;
+  background-color: var(--main-secondary-muted);
   color: var(--main-secondary);
+}
+.card-list__item:deep(.button) {
+  width: 150px;
+  @media screen and (max-width: 1207px) {
+    height: 40px;
+  }
+  @media screen and (max-width: 767px) {
+    height: 40px;
+  }
 }
 .card-list__item:deep(.button_text) {
   color: var(--main-secondary) !important;
 }
 .card-list__item:hover:deep(.button.color_secondary) {
-  background-color: var(--main-primary);
-  border-color: var(--main-on-primary);
-  border-style: solid;
-  border-width: 1px;
+  background-color: var(--main-secondary);
   color: var(--main-secondary);
 }
 .card-list__item:hover:deep(.button_text) {
@@ -99,6 +104,7 @@ const props = defineProps<ArticleCardProps>()
 
 
 .card-list__image {
+  overflow: hidden;
   width: 100%;
   height: 162px;
   @media screen and (max-width: 1207px) {
@@ -111,4 +117,5 @@ const props = defineProps<ArticleCardProps>()
     height: 96px;
   }
 }
+
 </style>
